@@ -1,0 +1,11 @@
+[Unit]
+Description=Mpc service
+Requires=mpd.service
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/bin/sh /home/pi/btn_track.sh
+
+[Install]
+WantedBy=multi-user.target
