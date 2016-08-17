@@ -16,25 +16,22 @@ mpc play
 printf "MPC started"
 
 i=0
-echo "Loop"
-while true
+echo "Loop check push"
+while :
 do
-        echo "Until"
-        until /bin/grep 1 /sys/class/gpio/gpio$GPIO_ID/value >> /dev/null
-        do
-                /bin/sleep .1
-        done
-        echo "End until"
-        i=$((i+1))
-        if [ $i -ge 30 ]
-                then
+    until /bin/grep 1 /sys/class/gpio/gpio$GPIO_ID/value >> /dev/null
+    do
+        /bin/sleep .1
+    done
 
-                sudo systemctl poweroff
-                echo "Shutdown..."
-                break
-        fi
+    let i++
+    if [ $i -ge 30 ]
+        then
+        printf "Shutdown by button"
+        sudo systemctl poweroff
+        break
+    fi
 
-        echo "Next Track"
-        /usr/bin/mpc next
+    echo "Next Track"
+    mpc next
 done
-echo "End loop"
