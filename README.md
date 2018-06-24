@@ -1,6 +1,6 @@
-This project contain files to transform raspbian on web radio player with mpd
+### UPDATE 06-2018
+After many trouble with button management, I try install with just mpd (many mpc client are available on smartphone).
 
-#Installation from raspbian
 1. Config post-install : configure tzdata locales network and force jack audio output
 ```console
 root@raspberrypi:/home/pi# raspi-config
