@@ -1,7 +1,7 @@
 ### UPDATE 06-2018
 After many trouble with button management, I try install with just mpd (many mpc client are available on smartphone).
 
-1. Config post-install : configure tzdata locales network and force jack audio output
+1. Config raspbian 9 post-install : configure tzdata locales network and force jack audio output
 ```console
 root@raspberrypi:/home/pi# raspi-config
 ```
