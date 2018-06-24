@@ -1,24 +1,47 @@
-This project contain files to transform raspbian on web radio player with one button to manage.
+This project contain files to transform raspbian on web radio player with mpd
 
-#Installation
-- Start from raspbian jessie 8
-- Add a simple push button on GPIO number 24.
-- Install mpd `apt install mpd mpc`
-- Copy/Paste btn_track.sh script in $HOME
-- Create mpc.service
-`sudo nano /etc/systemd/system/mpc.service`
+#Installation from raspbian
+1. Config post-install : configure tzdata locales network and force jack audio output
+```console
+root@raspberrypi:/home/pi# raspi-config
+```
+2. Update, upgrade and install mpd
+```console
+root@raspberrypi:/home/pi# apt update && apt upgrade -y && apt install mpc mpd && systemctl enable mpd
+```
+3. Add your radio link on new file:
+```console
+root@raspberrypi:/home/pi# nano /var/lib/mpd/playlists/radios.m3u
+```
+for exemple
+```txt
+#France Inter
+https://chai5she.cdn.dvmr.fr/franceinter-midfi.mp3
+#Sing-Sing
+http://stream.sing-sing.org:8000/singsing128
+```
+4. Ajust sound volume (100%)<br/>
+`alsamixer`
+5. Create bash script who autoplay radios on boot
+```console
+pi@raspberrypi:~ $ nano /home/pi/autoplay.sh
+```
+```bash
+#!/bin/sh
 
-#Tricks
-- To speedup boot time, try to disable dhcp at boot and configure a static IP for rasp
-`cat /etc/network/interfaces`
-
-
-> \#iface eth0 inet manual <br>
-> auto eth0 <br>
-> iface eth0 inet static <br> 
->  address 192.168.1.30 <br>
->  netmask 255.255.255.0 <br>
->  network 192.168.1.0 <br>
->  broadcast 192.168.1.255 <br>
->  gateway 192.168.1.254 <br>
->  dns-nameservers 91.121.161.184 188.165.197.144
+if mpc status | awk 'NR==2' | grep playing; then
+  echo "mpc déja lancé, je ne fait que passer..."
+else
+  echo "chargement des radios"
+  mpc clear
+  mpc load radios
+  mpc play
+fi
+```
+6. Add crontab
+```console
+pi@raspberrypi:~ $ crontab -e
+```
+```bash
+@reboot sh /home/pi/autoplay.sh &
+```
