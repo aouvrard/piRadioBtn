@@ -52,4 +52,8 @@ pi@raspberrypi:~ $ crontab -e
 ```
 ```bash
 @reboot sh /home/pi/autoplay.sh &
+# France Inter tout les matins a 8h
+00 08 * * * mpc play 1
+# Sing-Sing le soir à 19h
+10 19 * * * mpc play 2
 ```
