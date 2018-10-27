@@ -57,3 +57,11 @@ pi@raspberrypi:~ $ crontab -e
 # Sing-Sing le soir à 19h
 10 19 * * * mpc play 2
 ```
+
+To avoid write error on disk, restart mdp every day
+```console
+root@raspberrypi:~ $ crontab -e
+```
+```bash
+00 04 * * * service mpd restart
+```
