@@ -1,19 +1,38 @@
-#URL radio on /var/lib/mpd/playlists/radios.m3u
+#EXTM3U
+# URL radio on /var/lib/mpd/playlists/radios.m3u
 
-#Inter
-http://aifae8cah8.lb.vip.cdn.dvmr.fr/franceinter-midfi.mp3
+#EXTINF:-1,France Inter
+https://chai5she.cdn.dvmr.fr/franceinter-midfi.mp3
 
-#Culture
+#EXTINF:-1,France Culture
 https://chai5she.cdn.dvmr.fr/franceculture-midfi.mp3
 
-#FIP
-https://chai5she.cdn.dvmr.fr/fip-midfi.mp3
-
-#sing sing
+#EXTINF:-1,Sing Sing
 http://stream.sing-sing.org:8000/singsing128
 
-#RTL
-#http://streaming.radio.rtl.fr/rtl-1-44-96
-
-#Paradise Radio
+#EXTINF:-1,Radio Paradise
 http://stream-uk1.radioparadise.com/mp3-192
+
+#EXTINF:-1,FIP
+https://chai5she.cdn.dvmr.fr/fip-midfi.mp3
+
+#EXTINF:-1,FIP Electro
+https://chai5she.cdn.dvmr.fr/fip-webradio8.mp3
+
+#EXTINF:-1,FIP Groove
+https://chai5she.cdn.dvmr.fr/fip-webradio3.mp3?ID=radiofrance
+
+#EXTINF:-1,FIP Rock
+https://chai5she.cdn.dvmr.fr/fip-webradio1.mp3?ID=radiofrance
+
+#EXTINF:-1,FIP Tout nouveau, tout fip
+https://chai5she.cdn.dvmr.fr/fip-webradio5.mp3?ID=radiofrance
+
+#EXTINF:-1,FIP Jazz
+https://chai5she.cdn.dvmr.fr/fip-webradio2.mp3?ID=radiofrance
+
+#EXTINF:-1,FIP Autour du monde
+https://chai5she.cdn.dvmr.fr/fip-webradio4.mp3?ID=radiofrance
+
+#EXTINF:-1,FIP Reggae
+https://chai5she.cdn.dvmr.fr/fip-webradio6.mp3?ID=radiofrance
